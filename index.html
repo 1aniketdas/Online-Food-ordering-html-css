@@ -1,549 +1,596 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-        *
-        {
-            margin: 0;
-            padding: 0;
-            /* box-sizing: border-box; */
-            font-family: "Baloo Bhaijaan 2", sans-serif;
-            font-family: "Roboto", sans-serif;
-        }
-        #navbar
-        {
-            width: 80%;
-            height: 80px;
-            margin: auto;
-            /* border: 2px solid red; */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .leftpart img
-        {
-            width: 120px;
-            height: 40px;
-        }
-        .rightpart
-        {
-            /* border: 2px solid blue; */
-            font-size: 1.7rem;
-        }
-        .rightpart ul
-        {
-            display: flex;
-            gap: 30px;
-        }
-        .rightpart ul li
-        {
-            list-style: none;
-            font-size: 1.2rem;
-        }
-        .rightpart ul li a
-        {
-            text-decoration: none;
-            color: black;
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-        #slider
-        {
-            width: 100%;
-            height: 70vh;
-            background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZmlyZWQlMjBjaGlja2VufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-        }
-        #slider div
-        {
-            width: 60%;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            border-radius: 10px;
-        }
-        #slider h1
-        {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-        }
-        #slider p
-        {
-            font-size: 2rem;
-            /* line-height: 1.5; */
-        }
-
-
-        
-
-
-
-
-
-
-        #categories
-        {
-            margin: 70px 0px;
-            /* border: 1px solid orange; */
-            display: flex;
-            flex-direction: column;
-            gap: 70px;
-        }
-        .product-container
-        {
-            /* border: 2px solid rgb(169, 0, 0); */
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 70px;
-        }
-        .product-box
-        {
-            display: flex;
-            flex-direction: column;
-            /* align-items: center; */
-            /* justify-content: center; */
-            /* text-align: center; */
-            border: 2px solid green;
-            padding: 10px;
-            border-radius: 10px;
-        }
-        .product-box img
-        {
-            width: 270px;
-            height: 270px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-        .product-info
-        {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 10px;
-        }
-        .btn
-        {
-            margin-top: 10px;
-            padding: 5px 20px;
-            font-size: 1rem;
-            background-color: red;
-            color: white;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            text-decoration: none;
-        }
-        .btn:hover
-        {
-            background-color: darkred;
-        }
-
-
-
-
-
-
-        
-
-        /* footer
-        {
-            width: 100%;
-            height: 60px;
-            color: white;
-            display: flex;
-            background-color: black;
-            justify-content: center;
-            align-items: center;
-            } */
-            
-            
-
-
-
-
-            
-            
-            
-        footer
-        {
-
-            max-height: 40vh;
-            min-height: 27vh;
-            /* height: 250px; */
-            /* border: 2px solid red; */
-            background-color: #202124;
-            color: rgb(205, 205, 205);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
-            /* justify-content: center;
-            gap: 20px; */
-        }
-        .container-up
-        {
-            /* border: 2px solid green; */
-            display: flex;
-            justify-content:space-between;
-            max-width: 60vw;
-            margin: 0 auto;
-            gap: 20px;
-        }
-        .bottom-info
-        {
-            /* border: 2px solid blue; */
-            display: grid;
-            grid-template-columns: repeat(4,1fr);
-            /* color: rgb(205, 205, 205); */
-
-            /* max-width: 40vw;
-            min-width: 20vw; */
-
-            /* margin: auto; */
-            gap: 30px;
-        }
-        .bottom-info-items
-        {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            /* align-items: flex-start; */
-        }
-        .map-location
-        {
-            /* border: 2px solid green; */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-        }
-        .app-download
-        {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-        }
-        .app-download img
-        {
-            width: 130px;
-            height: 40px;
-            object-fit: contain;
-        }
-        .social-network
-        {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-        }
-        .social-network img
-        {
-            width: 30px;
-            height: 30px;
-            object-fit: contain;
-        }
-        .container-down
-        {
-            /* border: 2px solid blue; */
-            /* text-align: center; */
-            /* padding: 10px 0px; */
-            /* font-size: 14px; */
-            color: white;
-        }
-        footer a
-        {
-            color: white;
-            /* margin: 6px 0px; */
-            /* font-size: 14px; */
-            text-decoration: none;
-        }
-        footer a:hover
-        {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-
-
-    
-    
-
-
-
-    <!-- grid, child selectors, display inline or block -->
-    <header>
-        <nav id="navbar">
-            <div class="leftpart">
-                <img loading="lazy" src="https://online.kfc.co.in/static/media/kfcLogo.492728c6.svg" alt="KFC LOGO">
-            </div>
-            <div class="rightpart">
-                <ul>
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-
-
-
-
-
-
-
-
-
-
-    <section id="slider">
-        <div>
-            <h1>Welcome to KFC</h1>
-            <p>Experience the best fried chicken and fast food with KFC</p>
-            <p>Discover our delicious menu items that combine taste, quality, and value.</p>
-        </div>
-    </section>
-
-
-
-
-
-
-
-
-
-
-    <section id="categories">
-        <div class="product-container">
-            <div class="product-box">
-                <img src="categ boiledeggroll.jpg">
-                <div class="product-info">
-                    <div>
-                        <h2>Mixed Roll</h2>
-                        <p>Price: ₹170</p>
-                    </div>
-                    <div>
-                        <a class="btn" href="buy.html#mixed-roll">Buy Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="product-box">
-                <img src="categ burger.jpg">
-                <div class="product-info">
-                    <div>
-                        <h2>Chicken Burger</h2>
-                        <p>Price: ₹170</p>
-                    </div>
-                    <div>
-                        <a class="btn" href="buy.html#chicken-burger">Buy Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="product-box">
-                <img src="categ Butter-Naan.jpg">
-                <div class="product-info">
-                    <div>
-                        <h2>Butter-Naan</h2>
-                        <p>Price: ₹80</p>
-                    </div>
-                    <div>
-                        <a class="btn" href="buy.html#butter-naan">Buy Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="product-box">
-                <img src="categ chow.jpg">
-                <div class="product-info">
-                    <div>
-                        <h2>Mixed Chow</h2>
-                        <p>Price: ₹120</p>
-                    </div>
-                    <div>
-                        <a class="btn" href="buy.html#mixed-chow">Buy Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="product-box">
-                <img src="categ Crispy.jpg">
-                <div class="product-info">
-                    <div>
-                        <h2>Fried Chicken</h2>
-                        <p>Price: ₹250</p>
-                    </div>
-                    <div>
-                        <a class="btn" href="buy.html#fried-chicken">Buy Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-        <div class="product-container">
-            <div class="product-box">
-                <img src="categ Fried-Rice.jpg">
-                <div class="product-info">
-                    <div>
-                        <h2>Fried Rice</h2>
-                        <p>Price: ₹270</p>
-                    </div>
-                    <div>
-                        <a class="btn" href="buy.html#fried-rice">Buy Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="product-box">
-                <img src="categ HarissaFish.jpg">
-                <div class="product-info">
-                    <div>
-                        <h2>Chilli Fish</h2>
-                        <p>Price: ₹199</p>
-                    </div>
-                    <div>
-                        <a class="btn" href="buy.html#chilli-fish">Buy Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="product-box">
-                <img src="categ KFC-Burger.jpg">
-                <div class="product-info">
-                    <div>
-                        <h2>Veg Burger</h2>
-                        <p>Price: ₹160</p>
-                    </div>
-                    <div>
-                        <a class="btn" href="buy.html#veg-burger">Buy Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="product-box">
-                <img src="categ pizza.jpg">
-                <div class="product-info">
-                    <div>
-                        <h2>Veg Pizza</h2>
-                        <p>Price: ₹199</p>
-                    </div>
-                    <div>
-                        <a class="btn" href="buy.html#veg-pizza">Buy Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="product-box">
-                <img src="categ prawn.png">
-                <div class="product-info">
-                    <div>
-                        <h2>Fried Prawn</h2>
-                        <p>Price: ₹300</p>
-                    </div>
-                    <div>
-                        <a class="btn" href="buy.html#fried-prawn">Buy Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-
-
-
-
-
-
-    <!-- <footer>
-        <p>&copy; 2024 KFC. All rights reserved.</p>
-    </footer> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <footer>
-        <!-- padding doesnt work in span -->
-        <div class="container-up">
-            <div class="bottom-info">
-                <div class="bottom-info-items">
-                    <a href="">Terms and Conditions</a>
-                    <a href="">Privacy Center</a>
-                    <a href="">Disclaimer</a>
-                    <a href="">Caution Notice</a>
-                </div>
-                <div class="bottom-info-items">
-                    <a href="">About KFC</a>
-                    <a href="">Jobs</a>
-                    <a href="">KFC Care</a>
-                    <a href="">Careers</a>
-                    <a href="">Our Golden Past</a>
-                </div>
-                <div class="bottom-info-items">
-                    <a href="">Menu</a>
-                    <a href="">Order Lookup</a>
-                    <a href="">Gift Card</a>
-                </div>
-                <div class="bottom-info-items">
-                    <a href="">Get Help</a>
-                    <a href="">Contact Us</a>
-                    <a href="">KFC Feedback</a>
-                </div>
-            </div>
-            <div class="map-location">
-                <img src="Find_KFC.webp" alt="">
-                <a href="">Find a KFC</a>
-            </div>
-            <div class="app-download">
-                <a href=""><img loading="lazy" src="google_play.png" alt="Google Play" class=""></a>
-                <a href=""><img loading="lazy" src="apple.png" alt="App Store" class=""></a>
-            </div>
-            <div class="social-network">
-                <a href=""><img src="Social_Facebook_White.webp" alt=""></a> |
-                <a href=""><img src="Social_Insta_White.webp" alt=""></a> |
-                <a href=""><img src="Social_Twitter_White.webp" alt=""></a>
-            </div>
-        </div>
-        <div class="container-down">
-            <p>&copy; 2024 KFC. All rights reserved.</p>
-        </div>
-    </footer>
-</body>
-</html>
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
+diff --git a/index.html b/index.html
+index 48e7c0d0435afd57ab72d0818fa0b0160798db2d..38ac868152fd119d7a0ad39f208b17ecc1f54f67 100644
+--- a/index.html
++++ b/index.html
+@@ -1,337 +1,374 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+         @import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+-        *
+-        {
+-            margin: 0;
+-            padding: 0;
+-            /* box-sizing: border-box; */
+-            font-family: "Baloo Bhaijaan 2", sans-serif;
+-            font-family: "Roboto", sans-serif;
+-        }
+-        #navbar
+-        {
+-            width: 80%;
+-            height: 80px;
+-            margin: auto;
+-            /* border: 2px solid red; */
+-            display: flex;
+-            justify-content: space-between;
+-            align-items: center;
+-        }
++        *
++        {
++            margin: 0;
++            padding: 0;
++            box-sizing: border-box;
++            font-family: "Baloo Bhaijaan 2", sans-serif;
++            font-family: "Roboto", sans-serif;
++        }
++        body
++        {
++            background-color: #fafafa;
++        }
++        #navbar
++        {
++            width: min(92%, 1200px);
++            min-height: 80px;
++            margin: auto;
++            display: flex;
++            justify-content: space-between;
++            align-items: center;
++            gap: 16px;
++            padding: 16px 0;
++            flex-wrap: wrap;
++        }
+         .leftpart img
+         {
+             width: 120px;
+             height: 40px;
+         }
+         .rightpart
+         {
+             /* border: 2px solid blue; */
+             font-size: 1.7rem;
+         }
+-        .rightpart ul
+-        {
+-            display: flex;
+-            gap: 30px;
+-        }
++        .rightpart ul
++        {
++            display: flex;
++            gap: 24px;
++            flex-wrap: wrap;
++            justify-content: flex-end;
++        }
+         .rightpart ul li
+         {
+             list-style: none;
+             font-size: 1.2rem;
+         }
+         .rightpart ul li a
+         {
+             text-decoration: none;
+             color: black;
+         }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+-        #slider
+-        {
+-            width: 100%;
+-            height: 70vh;
+-            background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZmlyZWQlMjBjaGlja2VufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60');
+-            background-size: cover;
+-            background-position: center;
++        #slider
++        {
++            width: 100%;
++            min-height: 55vh;
++            padding: 40px 16px;
++            background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZmlyZWQlMjBjaGlja2VufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60');
++            background-size: cover;
++            background-position: center;
+             display: flex;
+             flex-direction: column;
+             justify-content: center;
+             align-items: center;
+             color: white;
+             text-align: center;
+         }
+-        #slider div
+-        {
+-            width: 60%;
+-            background-color: rgba(0, 0, 0, 0.5);
+-            padding: 20px;
+-            border-radius: 10px;
+-        }
+-        #slider h1
+-        {
+-            font-size: 3.5rem;
+-            margin-bottom: 20px;
+-        }
+-        #slider p
+-        {
+-            font-size: 2rem;
+-            /* line-height: 1.5; */
+-        }
++        #slider div
++        {
++            width: min(90%, 850px);
++            background-color: rgba(0, 0, 0, 0.5);
++            padding: 20px;
++            border-radius: 10px;
++        }
++        #slider h1
++        {
++            font-size: clamp(2rem, 5vw, 3.5rem);
++            margin-bottom: 20px;
++        }
++        #slider p
++        {
++            font-size: clamp(1rem, 3vw, 1.5rem);
++            line-height: 1.4;
++        }
+ 
+ 
+         
+ 
+ 
+ 
+ 
+ 
+ 
+-        #categories
+-        {
+-            margin: 70px 0px;
+-            /* border: 1px solid orange; */
+-            display: flex;
+-            flex-direction: column;
+-            gap: 70px;
+-        }
++        #categories
++        {
++            width: min(92%, 1200px);
++            margin: 70px auto;
++            display: flex;
++            flex-direction: column;
++            gap: 70px;
++        }
+         .product-container
+         {
+             /* border: 2px solid rgb(169, 0, 0); */
+             display: flex;
+             justify-content: center;
+             flex-wrap: wrap;
+             gap: 70px;
+         }
+         .product-box
+         {
+-            display: flex;
+-            flex-direction: column;
+-            /* align-items: center; */
+-            /* justify-content: center; */
+-            /* text-align: center; */
+-            border: 2px solid green;
+-            padding: 10px;
+-            border-radius: 10px;
+-        }
+-        .product-box img
+-        {
+-            width: 270px;
+-            height: 270px;
+-            object-fit: cover;
+-            border-radius: 10px;
++            display: flex;
++            flex-direction: column;
++            border: 1px solid #d4d4d4;
++            width: min(100%, 300px);
++            padding: 10px;
++            border-radius: 10px;
++            background: white;
++            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
++        }
++        .product-box img
++        {
++            width: 100%;
++            height: 270px;
++            object-fit: cover;
++            border-radius: 10px;
+         }
+         .product-info
+         {
+-            display: flex;
+-            justify-content: space-between;
+-            align-items: center;
+-            margin-top: 10px;
+-        }
++            display: flex;
++            justify-content: space-between;
++            align-items: center;
++            margin-top: 10px;
++            gap: 12px;
++        }
+         .btn
+         {
+             margin-top: 10px;
+             padding: 5px 20px;
+             font-size: 1rem;
+             background-color: red;
+             color: white;
+             border: none;
+             border-radius: 25px;
+             cursor: pointer;
+             text-decoration: none;
+         }
+         .btn:hover
+         {
+             background-color: darkred;
+         }
+ 
+ 
+ 
+ 
+ 
+ 
+         
+ 
+         /* footer
+         {
+             width: 100%;
+             height: 60px;
+             color: white;
+             display: flex;
+             background-color: black;
+             justify-content: center;
+             align-items: center;
+             } */
+             
+             
+ 
+ 
+ 
+ 
+             
+             
+             
+-        footer
+-        {
+-
+-            max-height: 40vh;
+-            min-height: 27vh;
+-            /* height: 250px; */
+-            /* border: 2px solid red; */
+-            background-color: #202124;
+-            color: rgb(205, 205, 205);
+-            display: flex;
+-            flex-direction: column;
+-            align-items: center;
+-            justify-content: space-around;
+-            /* justify-content: center;
+-            gap: 20px; */
+-        }
+-        .container-up
+-        {
+-            /* border: 2px solid green; */
+-            display: flex;
+-            justify-content:space-between;
+-            max-width: 60vw;
+-            margin: 0 auto;
+-            gap: 20px;
+-        }
+-        .bottom-info
+-        {
+-            /* border: 2px solid blue; */
+-            display: grid;
+-            grid-template-columns: repeat(4,1fr);
+-            /* color: rgb(205, 205, 205); */
+-
+-            /* max-width: 40vw;
+-            min-width: 20vw; */
+-
+-            /* margin: auto; */
+-            gap: 30px;
+-        }
++        footer
++        {
++            padding: 20px 16px;
++            background-color: #202124;
++            color: rgb(205, 205, 205);
++            display: flex;
++            flex-direction: column;
++            align-items: center;
++            gap: 16px;
++            justify-content: center;
++        }
++        .container-up
++        {
++            display: flex;
++            justify-content:space-between;
++            align-items: flex-start;
++            width: min(100%, 1200px);
++            margin: 0 auto;
++            gap: 20px;
++            flex-wrap: wrap;
++        }
++        .bottom-info
++        {
++            display: grid;
++            grid-template-columns: repeat(4,1fr);
++            min-width: min(100%, 620px);
++            gap: 30px;
++        }
+         .bottom-info-items
+         {
+             display: flex;
+             flex-direction: column;
+             gap: 10px;
+             /* align-items: flex-start; */
+         }
+         .map-location
+         {
+             /* border: 2px solid green; */
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             gap: 10px;
+         }
+         .app-download
+         {
+             display: flex;
+             flex-direction: column;
+             justify-content: center;
+             align-items: center;
+             gap: 10px;
+         }
+         .app-download img
+         {
+             width: 130px;
+             height: 40px;
+             object-fit: contain;
+         }
+         .social-network
+         {
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             gap: 10px;
+         }
+         .social-network img
+         {
+             width: 30px;
+             height: 30px;
+             object-fit: contain;
+         }
+-        .container-down
+-        {
+-            /* border: 2px solid blue; */
+-            /* text-align: center; */
+-            /* padding: 10px 0px; */
+-            /* font-size: 14px; */
+-            color: white;
+-        }
++        .container-down
++        {
++            color: white;
++            text-align: center;
++        }
+         footer a
+         {
+             color: white;
+             /* margin: 6px 0px; */
+             /* font-size: 14px; */
+             text-decoration: none;
+         }
+-        footer a:hover
+-        {
+-            text-decoration: underline;
+-        }
+-    </style>
+-</head>
+-<body>
++        footer a:hover
++        {
++            text-decoration: underline;
++        }
++
++        @media (max-width: 1024px)
++        {
++            .bottom-info
++            {
++                grid-template-columns: repeat(2, 1fr);
++                min-width: 0;
++                width: 100%;
++            }
++        }
++
++        @media (max-width: 768px)
++        {
++            .rightpart
++            {
++                width: 100%;
++            }
++            .rightpart ul
++            {
++                justify-content: flex-start;
++                gap: 14px;
++            }
++            .product-container
++            {
++                gap: 24px;
++            }
++            .product-box
++            {
++                width: 100%;
++            }
++            .product-info
++            {
++                flex-direction: column;
++                align-items: flex-start;
++            }
++            .bottom-info
++            {
++                grid-template-columns: 1fr;
++            }
++        }
++    </style>
++</head>
++<body>
+ 
+ 
+     
+     
+ 
+ 
+ 
+     <!-- grid, child selectors, display inline or block -->
+     <header>
+         <nav id="navbar">
+             <div class="leftpart">
+                 <img loading="lazy" src="https://online.kfc.co.in/static/media/kfcLogo.492728c6.svg" alt="KFC LOGO">
+             </div>
+             <div class="rightpart">
+-                <ul>
+-                    <li><a href="home.html">Home</a></li>
+-                    <li><a href="about.html">About</a></li>
+-                    <li><a href="services.html">Services</a></li>
+-                    <li><a href="contact.html">Contact</a></li>
+-                </ul>
+-            </div>
+-        </nav>
++                <ul>
++                    <li><a href="#slider">Home</a></li>
++                    <li><a href="#categories">Menu</a></li>
++                    <li><a href="buy.html">Order</a></li>
++                    <li><a href="#site-footer">Contact</a></li>
++                </ul>
++            </div>
++        </nav>
+     </header>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+     <section id="slider">
+         <div>
+             <h1>Welcome to KFC</h1>
+             <p>Experience the best fried chicken and fast food with KFC</p>
+             <p>Discover our delicious menu items that combine taste, quality, and value.</p>
+         </div>
+     </section>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+@@ -477,73 +514,73 @@
+ 
+ 
+ 
+ 
+     <!-- <footer>
+         <p>&copy; 2024 KFC. All rights reserved.</p>
+     </footer> -->
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+-    <footer>
++    <footer id="site-footer">
+         <!-- padding doesnt work in span -->
+         <div class="container-up">
+             <div class="bottom-info">
+                 <div class="bottom-info-items">
+                     <a href="">Terms and Conditions</a>
+                     <a href="">Privacy Center</a>
+                     <a href="">Disclaimer</a>
+                     <a href="">Caution Notice</a>
+                 </div>
+                 <div class="bottom-info-items">
+                     <a href="">About KFC</a>
+                     <a href="">Jobs</a>
+                     <a href="">KFC Care</a>
+                     <a href="">Careers</a>
+                     <a href="">Our Golden Past</a>
+                 </div>
+                 <div class="bottom-info-items">
+                     <a href="">Menu</a>
+                     <a href="">Order Lookup</a>
+                     <a href="">Gift Card</a>
+                 </div>
+                 <div class="bottom-info-items">
+                     <a href="">Get Help</a>
+                     <a href="">Contact Us</a>
+                     <a href="">KFC Feedback</a>
+                 </div>
+             </div>
+             <div class="map-location">
+                 <img src="Find_KFC.webp" alt="">
+                 <a href="">Find a KFC</a>
+             </div>
+             <div class="app-download">
+                 <a href=""><img loading="lazy" src="google_play.png" alt="Google Play" class=""></a>
+                 <a href=""><img loading="lazy" src="apple.png" alt="App Store" class=""></a>
+             </div>
+             <div class="social-network">
+                 <a href=""><img src="Social_Facebook_White.webp" alt=""></a> |
+                 <a href=""><img src="Social_Insta_White.webp" alt=""></a> |
+                 <a href=""><img src="Social_Twitter_White.webp" alt=""></a>
+             </div>
+         </div>
+         <div class="container-down">
+             <p>&copy; 2024 KFC. All rights reserved.</p>
+         </div>
+     </footer>
+ </body>
+-</html>
+\ No newline at end of file
++</html>
+ 
+EOF
+)
